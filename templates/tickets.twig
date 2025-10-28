@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Ticket Management</h1>
+  <button class="btn btn-primary" onclick="showCreateForm()">Create New Ticket</button>
+  <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
+
+  <div id="createForm" style="display: none; margin-top: 20px;">
+    <div class="card">
+      <h3>Create Ticket</h3>
+      <form id="ticketForm">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required />
+          {% if errors.title %}
+            <div class="error">{{ errors.title }}</div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" name="status" required>
+            <option value="open">Open</option>
+            <option value="in_progress">In Progress</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="button" class="btn btn-secondary" onclick="hideCreateForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top: 20px;">
+    {% for ticket in tickets %}
+    <div class="card">
+      <h3>{{ ticket.title }}</h3>
+      <p>{{ ticket.description }}</p>
+      <p class="status-{{ ticket.status }}">{{ ticket.status | replace({'_': ' '}) | title }}</p>
+      <div>
+        <button class="btn btn-primary" onclick="editTicket({{ ticket.id }})">Edit</button>
+        <button class="btn btn-secondary" onclick="deleteTicket({{ ticket.id }})">Delete</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
