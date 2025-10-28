@@ -1,20 +1,20 @@
 <div class="container">
   <h1>Dashboard</h1>
-  <div class="grid">
+  <div class="grid" style="margin-bottom: 30px;">
     <div class="card">
       <h3>Total Tickets</h3>
-      <p>{{ stats.total }}</p>
+      <p style="font-size: 2rem; font-weight: bold;">{{ stats.total }}</p>
     </div>
     <div class="card">
       <h3>Open Tickets</h3>
-      <p>{{ stats.open }}</p>
+      <p style="font-size: 2rem; font-weight: bold; color: #27ae60;">{{ stats.open }}</p>
     </div>
     <div class="card">
-      <h3>Resolved Tickets</h3>
-      <p>{{ stats.closed }}</p>
+      <h3>Closed Tickets</h3>
+      <p style="font-size: 2rem; font-weight: bold; color: #95a5a6;">{{ stats.closed }}</p>
     </div>
   </div>
-  <div style="margin-top: 20px;">
+  <div style="text-align: center; margin-bottom: 30px;">
     <button class="btn btn-primary" onclick="navigateTo('tickets')">Manage Tickets</button>
     <button class="btn btn-secondary" onclick="logout()">Logout</button>
   </div>
